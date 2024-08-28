@@ -14,6 +14,9 @@ Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, a
 
 ## Steps
 
+![Flowchart v01](https://github.com/collaborativebioinformatics/ilikebigmobileelementsandicannotlie/blob/main/flowchart_2024-08-28-1444.png)
+
+
 1. Get starfish to work (Jonah --> Marcus)  
 2. Get data (genome, gene annotation, protein sequence, RepeatMasker annotation) for multiple species (Meghana: human, mouse; Alexis: pig, mouse; also Jonah's horse or dog?) 
 3. Implement starfish code on DNAnexus (create app)
