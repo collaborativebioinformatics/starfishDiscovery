@@ -6,6 +6,10 @@
 
 Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, and Russel Santos
 
+## Purpose
+
+Extending [starfish](https://github.com/egluckthaler/starfish) for de novo giant mobile element discovery/annotation in non-fungi genomes.
+
 ## Deliverables
 
 1. Proof of concept that starfish works in non-fungi genomes (or doesn’t) and maybe even discover something :)   
