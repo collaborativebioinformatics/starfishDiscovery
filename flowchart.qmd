@@ -1,0 +1,16 @@
+---
+title: "flowchart"
+format: html
+editor: visual
+---
+
+```{mermaid}
+flowchart TD
+A[Get starfish to work] --> B[Create DNAnexus app for starfish]
+B --> D[Run starfish on multiple species]
+C[Get genome and annotation data for multiple species] --> D
+E[Generate R code for plotting] --> F[Wrap in golum/Shiny]
+D --> G[Explore results of de novo giant mobile element for multiple species]
+F --> G
+
+```
