@@ -9,8 +9,8 @@ flowchart TD
 A[Get starfish to work] --> B[Create DNAnexus app for starfish]
 B --> D[Run starfish on multiple species]
 C[Get genome and annotation data for multiple species] --> D
-E[Generate R code for plotting] --> F[Wrap in golum/Shiny]
-D --> G[Explore results of de novo giant mobile element for multiple species]
+E[Generate R code for plotting] --> F[Wrap in golem/Shiny]
+D --> G[Explore results of de novo giant mobile elements in multiple species]
 F --> G
 
 ```
