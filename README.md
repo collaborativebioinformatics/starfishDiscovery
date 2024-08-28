@@ -8,7 +8,7 @@ Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, a
 
 ## Purpose
 
-Extending [starfish](https://github.com/egluckthaler/starfish) for de novo giant mobile element discovery/annotation in non-fungi genomes.
+Extending [starfish](https://github.com/egluckthaler/starfish) for *de novo* giant mobile element discovery/annotation in non-fungi genomes.
 
 ## Deliverables
 
