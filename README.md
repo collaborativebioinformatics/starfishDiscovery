@@ -105,10 +105,11 @@ ls -1 # You should see data/ here. Inside data/ you should have your new data.
 
 Jonah: In progress.
 
-### 3. DNAnexus app
+### 3. DNAnexus app/tool
 
-Alexis: In progress. Will use docker Callum created.
+Alexis: In progess. Successful test of Callum's docker on DNAnexus ttyd
 
-### 4. R Shiny app 
+### 4. R Shiny app
 
-Meghana & Russel: In progress.
+Meghana & Russel: In progress. Parameterized original R code; testing with Callum's docker example output files.
+
