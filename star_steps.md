@@ -1,11 +1,14 @@
 # toy data steps as described in the step-by-step tutorial
 
 ## setup
+```
 mkdir test
+```
 
 1. set the starfish dir
-
+```
 STARFISHDIR=$(dirname -- $(command -v -- starfish))/../
+```
 
 2. generate text files of sample\tfile_path
 ```
