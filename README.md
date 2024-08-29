@@ -8,13 +8,18 @@
 Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, Marcus Chan, and Russel Santos
 
 
-## Scope of this project
+## Introduction
 
-This project aims to improve the usability of [starfish (v1.0.0)](https://github.com/egluckthaler/starfish). 
+<Insert something about the importance of large mobile elements with genes in them, the novelty of this discovery in fungi and need to be further explored in other species>
 
-Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* giant mobile element discovery/annotation in fungal genomes. Starfish currently requires running multiple, separate bash scripts. We aim to create pipelines/workflows for a more accessible, streamlined, and user-friendly implementation of starfish that could expand its use. Downstream analysis currently involves `R` scripts on [figshare](https://figshare.com/articles/dataset/Supporting_data_for_Systematic_identification_of_cargo-carrying_genetic_elements_reveals_new_dimensions_of_eukaryotic_diversity_/24430447). We aim to improve accessibility of these scripts through implementation in an `R` Shiny app.
+This project aims to improve the usability of [starfish (v1.0.0)](https://github.com/egluckthaler/starfish). Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* giant mobile element discovery/annotation in fungal genomes. 
 
-### Current implementation
+
+## Method
+
+Starfish currently requires running multiple, separate bash scripts. We aim to create pipelines/workflows for a more accessible, streamlined, and user-friendly implementation of starfish that could expand its use. Downstream analysis currently involves `R` scripts on [figshare](https://figshare.com/articles/dataset/Supporting_data_for_Systematic_identification_of_cargo-carrying_genetic_elements_reveals_new_dimensions_of_eukaryotic_diversity_/24430447). We aim to improve accessibility of these scripts through implementation in an `R` Shiny app.
+
+### Original implementation
 
 ```mermaid
 flowchart TB
@@ -30,7 +35,7 @@ H --> I[Visualize with R scripts]
 I --> I
 ```
 
-### Our goal
+### Our streamlined implementation
 
 ```mermaid
 flowchart TB
@@ -45,10 +50,6 @@ ElementFinder3->
 RegionFinder}
 D --> E{Visualize with Shiny}
 ```
-
-### Future goals
-Future goals could include the application of Starfish to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.
-
 
 ## Deliverables
 
@@ -111,4 +112,13 @@ Alexis: In progess. Successful test of Callum's docker on DNAnexus ttyd
 ### 4. R Shiny app
 
 Meghana & Russel: In progress. Parameterized original R code; testing with Callum's docker example output files.
+
+## Results 
+
+<Describe how to use it, a use case, or something we found with it>.
+
+## Future directions
+Future goals could include the application of Starfish to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.
+
+
 
