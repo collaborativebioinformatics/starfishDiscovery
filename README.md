@@ -12,18 +12,33 @@ Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, M
 
 This project aims to improve the usability of [starfish](https://github.com/egluckthaler/starfish). Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a tool for *de novo* giant mobile element discovery/annotation in fungal genomes. Starfish currently requires running multiple, separate bash scripts. We aim to create pipelines/workflows for a more accessible, streamlined, and user-friendly implementation of starfish that could expand its use. Downstream analysis currently involves `R` scripts on [figshare](https://figshare.com/articles/dataset/Supporting_data_for_Systematic_identification_of_cargo-carrying_genetic_elements_reveals_new_dimensions_of_eukaryotic_diversity_/24430447). We aim to improve accessibility of these scripts through implementation in an `R` Shiny app.
 
+### Current implementation
+
 ```mermaid
 stateDiagram-v2
-[HMM] --> Mod1
-[Genome-Sequence] --> Mod1
-[Gene-Annotation] --> Mod1
-[Protein-Sequence] --> Mod1
-Mod1 --> Mod2
-Mod2 --> Mod3
-Mod3 --> [Output]
-[Output] --> Mod3
+InputAnnotation --> GeneFinder1
+GeneFinder1 --> GeneFinder2
+GeneFinder2 --> GeneFinder3
+GeneFinder3 --> ElementFinder1
+ElementFinder1 --> ElementFinder2
+ElementFinder2 --> ElementFinder1
+ElementFinder2 --> ElementFinder3
+ElementFinder3 --> RegionFinder
+RegionFinder --> Visualize
 ```
 
+### Our goal
+
+```mermaid
+stateDiagram-v2
+InputAnnotation --> ElementFinder1
+ElementFinder1 --> ElementFinder2
+ElementFinder2 --> ElementFinder1
+ElementFinder2 --> RegionFinder
+RegionFinder --> Visualize
+```
+
+### Future goals
 Future goals could include the application of Starfish to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.
 
 
