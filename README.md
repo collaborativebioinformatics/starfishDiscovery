@@ -20,8 +20,8 @@ A(InputAnnotation) --> B[GeneFinder1]
 B --> C[GeneFinder2]
 C --> D[GeneFinder3]
 D --> E[ElementFinder1]
+E --> E
 E --> F[ElementFinder2]
-F --> E
 F --> G[ElementFinder3]
 G --> H[RegionFinder]
 H --> I[Visualize with R scripts]
@@ -36,9 +36,11 @@ A(InputAnnotation) --> B{GeneFinder1->
 GeneFinder2->
 GeneFinder3->
 ElementFinder1}
-B --> C[ElementFinder2]
+B --> C[ElementFinder1]
 C --> C
-C --> D[RegionFinder]
+C --> D{ElementFinder2->
+ElementFinder3->
+RegionFinder}
 D --> E{Visualize with Shiny}
 ```
 
