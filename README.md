@@ -2,6 +2,7 @@
 
 *aka ilikebigmobileelementsandicannotlie*
 
+![logo](894810_cartoon starfish with binoculars _xl-1024-v1-0.png)
 
 ## Group members
 
