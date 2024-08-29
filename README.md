@@ -4,7 +4,7 @@
 
 ## Group members
 
-Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, and Russel Santos
+Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, Marcus Chan, and Russel Santos
 
 ## Purpose
 
