@@ -25,5 +25,5 @@ Extending [starfish](https://github.com/egluckthaler/starfish) for *de novo* gia
 2. Get data (genome, gene annotation, protein sequence, RepeatMasker annotation) for multiple species (Meghana: human, mouse; Alexis: pig, cow; also Jonah's horse or dog?) 
 3. Implement `starfish` code on DNAnexus (create app)
 4. Generate R code for loading/viz data, use figshare code as starting point (Russel --> Mauricio --> Alexis) 
-5. Wrap R code into Shiny app with `golam` (Jonah)
+5. Wrap R code into Shiny app with `golem` (Jonah)
 6. If we discover something in our genomes, follow-up on that :)
