@@ -10,7 +10,10 @@ Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, M
 
 ## Introduction
 
-<Insert something about the importance of large mobile elements with genes in them, the novelty of this discovery in fungi and need to be further explored in other species>
+Mobile genetic elements (also known as transposons or jumping genes) can jump  to different locations of a genome by either a cut-and-paste mechanism or a copy-and-paste mechanism. Transposons can help genomes evolve, have mutagenic effects and  affect gene expression across species. In humans, they are implicated in the origin of diseases (Chenais.Transposable Elements and Human Diseases: Mechanisms and Implication in the Response to Environmental Pollutants.). On the flip side, they can be used in genetic engineering to cure genetic diseases, making their discovery and annotation in the genome important. 
+
+In fungi, transposons confer metal resistance and have a significant impact in genome evolution. However, identifying and annotating them in the genome can be challenging due to their diverse structures, which complicate mapping, and their ability to transfer between species, making it difficult to determine their function.
+
 
 This project aims to improve the usability of [starfish (v1.0.0)](https://github.com/egluckthaler/starfish). Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* giant mobile element discovery/annotation in fungal genomes. 
 
