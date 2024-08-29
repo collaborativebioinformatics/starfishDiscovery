@@ -168,3 +168,49 @@ awk '{
     else print $0 "\t169,169,169";                # Dark gray otherwise
 }' elementFinder/macpha6.elements.bed > elementFinder/macpha6.elements.color.bed
 ```
+
+4b. Assign all "Starships" to a family by searching the candidate captain sequences against the reference captain HMM profile database and identifying the best profile hit to each sequence
+```
+hmmsearch --noali --notextw -E 0.001 --max --cpu 12 --tblout elementFinder/macpha6_tyr_vs_YRsuperfams.out $STARFISHDIR/db/YRsuperfams.p1-512.hmm geneFinder/macpha6_tyr.filt_intersect.fas
+perl -p -e 's/ +/\t/g' elementFinder/macpha6_tyr_vs_YRsuperfams.out | cut -f1,3,5 | grep -v '#' | sort -k3,3g | awk '!x[$1]++' > elementFinder/macpha6_tyr_vs_YRsuperfams_besthits.txt
+```
+
+4c. replace all captain IDs with starship IDs to simplify downstream parsing
+```
+grep -P '\tcap\t' elementFinder/macpha6.elements.bed | cut -f4,7 > elementFinder/macpha6.cap2ship.txt
+$STARFISHDIR/aux/searchReplace.pl --strict -i elementFinder/macpha6_tyr_vs_YRsuperfams_besthits.txt -r elementFinder/macpha6.cap2ship.txt > elementFinder/macpha6_elements_vs_YRsuperfams_besthits.txt
+```
+
+4d. group all Starships into naves using mmseqs2 easy-cluster on the captain sequences with a very permissive 50% percent ID/ 25% coverage threshold:
+```
+mmseqs easy-cluster geneFinder/macpha6_tyr.filt_intersect.fas elementFinder/macpha6_tyr elementFinder/ --threads 2 --min-seq-id 0.5 -c 0.25 --alignment-mode 3 --cov-mode 0 --cluster-reassign
+$STARFISHDIR/aux/mmseqs2mclFormat.pl -i elementFinder/macpha6_tyr_cluster.tsv -g navis -o elementFinder/
+```
+
+## WIP stopped here - marcus
+5. use sourmash and mcl to group all elements into haplotypes based on pairwise k-mer similarities of element nucleotide sequences:
+- STARFISHMAINSIMDIR=$/mnt/c/Users/TechD/Documents/Marcus/Others/BaylorCollegeMedicineHackathon2024/starfish/main/sim
+- perl "/mnt/c/Users/TechD/Documents/Marcus/Others/BaylorCollegeMedicineHackathon2024/starfish/main/sim" -m element -t nucl -b elementFinder/macpha6.elements.bed -x macpha6 -o elementFinder/ -a ome2assembly.txt
+
+```
+starfish sim -m element -t nucl -b elementFinder/macpha6.elements.bed -x macpha6 -o elementFinder/ -a ome2assembly.txt
+starfish group -m mcl -s elementFinder/macpha6.element.nucl.sim -i hap -o elementFinder/ -t 0.05
+```
+6. replace captain IDs with starship IDs in the naves file:
+```
+$STARFISHDIR/aux/searchReplace.pl -i elementFinder/macpha6_tyr_cluster.mcl -r elementFinder/macpha6.cap2ship.txt > elementFinder/macpha6.element_cluster.mcl
+```
+7. merge navis with haplotype to create a navis-haplotype label for each Starship:
+```
+$STARFISHDIR/aux/mergeGroupfiles.pl -t elementFinder/macpha6.element_cluster.mcl -q elementFinder/macpha6.element.nucl.I1.5.mcl > elementFinder/macpha6.element.navis-hap.mcl
+```
+8. convert mcl to gene2og format to simplify downstream parsing:
+```
+awk '{ for (i = 2; i <= NF; i++) print $i"\t"$1 }' elementFinder/macpha6.element.navis-hap.mcl > elementFinder/macpha6.element.navis-hap.txt
+```
+9. now add the family and navis-haplotype into to the element.feat file to consolidate metadata:
+```
+join -t$'\t' -1 1 -2 2 <(sort -t$'\t' -k1,1 elementFinder/macpha6.element.navis-hap.txt | grep -P '_e|_s') <(sort -t$'\t' -k2,2 elementFinder/macpha6.elements.feat) | awk -F'\t' '{print}' > elementFinder/macpha6.elements.temp.feat
+echo -e "#elementID\tfamilyID\tnavisHapID\tcontigID\tcaptainID\telementBegin\telementEnd\telementLength\tstrand\tboundaryType\temptySiteID\temptyContig\temptyBegin\temptyEnd\temptySeq\tupDR\tdownDR\tDRedit\tupTIR\tdownTIR\tTIRedit\tnestedInside\tcontainNested" > elementFinder/macpha6.elements.ann.feat
+join -t$'\t' -1 1 -2 1 <(sort -t$'\t' -k1,1 elementFinder/macpha6_elements_vs_YRsuperfams_besthits.txt | grep -P '_e|_s' | cut -f1,2) <(sort -t$'\t' -k1,1 elementFinder/macpha6.elements.temp.feat) | awk -F'\t' '{print}' >> elementFinder/macpha6.elements.ann.feat
+```
