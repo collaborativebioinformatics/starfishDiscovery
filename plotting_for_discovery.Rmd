@@ -1,0 +1,7 @@
+--------------
+author: "Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, Marcus Chan, and Russel Santos"
+title: "Visualization for Starfish Discovery"
+date: "Aug 29, 2024"
+params:
+  outdir: '/Users/meghanaram/Desktop/hackathon/ilikebigelementsandicannotlie/'
+--------------
