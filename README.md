@@ -2,7 +2,7 @@
 
 *aka ilikebigmobileelementsandicannotlie*
 
-![logo](894810_cartoon starfish with binoculars _xl-1024-v1-0.png)
+![logo](894810_cartoon_starfish_with_binoculars_xl-1024-v1-0.png)
 
 ## Group members
 
