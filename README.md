@@ -15,27 +15,31 @@ This project aims to improve the usability of [starfish](https://github.com/eglu
 ### Current implementation
 
 ```mermaid
-stateDiagram-v2
-InputAnnotation --> GeneFinder1
-GeneFinder1 --> GeneFinder2
-GeneFinder2 --> GeneFinder3
-GeneFinder3 --> ElementFinder1
-ElementFinder1 --> ElementFinder2
-ElementFinder2 --> ElementFinder1
-ElementFinder2 --> ElementFinder3
-ElementFinder3 --> RegionFinder
-RegionFinder --> Visualize
+flowchart TB
+A(InputAnnotation) --> B[GeneFinder1]
+B --> C[GeneFinder2]
+C --> D[GeneFinder3]
+D --> E[ElementFinder1]
+E --> F[ElementFinder2]
+F --> E
+F --> G[ElementFinder3]
+G --> H[RegionFinder]
+H --> I[Visualize with R scripts]
+I --> I
 ```
 
 ### Our goal
 
 ```mermaid
-stateDiagram-v2
-InputAnnotation --> ElementFinder1
-ElementFinder1 --> ElementFinder2
-ElementFinder2 --> ElementFinder1
-ElementFinder2 --> RegionFinder
-RegionFinder --> Visualize
+flowchart TB
+A(InputAnnotation) --> B{GeneFinder1->
+GeneFinder2->
+GeneFinder3->
+ElementFinder1}
+B --> C[ElementFinder2]
+C --> C
+C --> D[RegionFinder]
+D --> E{Visualize with Shiny}
 ```
 
 ### Future goals
