@@ -1,8 +1,7 @@
 # Starfish Discovery
 
+<img src="https://github.com/collaborativebioinformatics/ilikebigmobileelementsandicannotlie/blob/main/894810_cartoon_starfish_with_binoculars_xl-1024-v1-0.png" width="400">
 *aka ilikebigmobileelementsandicannotlie*
-
-![logo](894810_cartoon_starfish_with_binoculars_xl-1024-v1-0.png)
 
 ## Group members
 
