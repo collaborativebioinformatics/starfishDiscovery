@@ -44,6 +44,7 @@ cd ilikebigmobileelementsandicannotlie
 mkdir docker_example
 
 # Run the container. 
+## Please excuse the personal dockerhub repo. I can move it to a more official one.
 docker run -it -v $(pwd)/docker_example:/tmp/starfish_example_output/ callumm93/starfish:v1.0.0
 
 # Inside the container, run the example script.
