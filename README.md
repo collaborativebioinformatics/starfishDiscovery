@@ -17,9 +17,12 @@ In fungi, transposons confer metal resistance and have a significant impact in g
 Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* giant mobile element discovery/annotation in fungal genomes. This project aims to improve the usability of [starfish (v1.0.0)](https://github.com/egluckthaler/starfish).
 
 
-## Method
+## Methods
 
-Starfish currently requires running multiple, separate bash scripts. We aim to create pipelines/workflows for a more accessible, streamlined, and user-friendly implementation of starfish that could expand its use. Downstream analysis currently involves `R` scripts on [figshare](https://figshare.com/articles/dataset/Supporting_data_for_Systematic_identification_of_cargo-carrying_genetic_elements_reveals_new_dimensions_of_eukaryotic_diversity_/24430447). We aim to improve accessibility of these scripts through implementation in an `R` Shiny app.
+**Containerization of current pipeline:** The current Starship pipeline consists of individual bash scripts, and the conda environment provided poses difficulty when running on different operating systems. A docker container is created to ensure easy execution across operating systems and to ensure reproducibility.
+**Streamlining the current pipeline:**  The pipeline is streamlined on snakemake to create an easier and a modular workflow. This makes the pipeline more efficient and robust.
+**Starfish discovery application:** The Starfish Discovery application visualizes the downstream analyses of Starfish through a R Shiny app to provide an interactive experience.
+
 
 ### Original implementation
 
