@@ -56,9 +56,8 @@ D --> E{Visualize with Shiny}
 ## Deliverables
 
 1. Docker workflow for `starfish`  
-2. Snakemake pipeline for `starfish`    
-3. DNAnexus app for `starfish`   
-4. R Shiny app for vizualization of `starfish` output
+2. Snakemake pipeline for `starfish`       
+3. R Shiny app for vizualization of `starfish` output
 
 
 ## Status
