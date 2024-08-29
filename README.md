@@ -69,6 +69,9 @@ straight to making a Docker image.
 You should be able to test it with the following steps:
 
 ```bash
+# Clone repository
+git clone https://github.com/collaborativebioinformatics/ilikebigmobileelementsandicannotlie
+
 # cd into the project repo
 cd ilikebigmobileelementsandicannotlie
 
