@@ -1,6 +1,6 @@
 # Starfish Discovery
 
-(previously: ilikebigmobileelementsandicannotlie)
+*aka ilikebigmobileelementsandicannotlie*
 
 
 ## Group members
@@ -10,7 +10,9 @@ Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, M
 
 ## Scope of this project
 
-This project aims to improve the usability of [starfish](https://github.com/egluckthaler/starfish). Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a tool for *de novo* giant mobile element discovery/annotation in fungal genomes. Starfish currently requires running multiple, separate bash scripts. We aim to create pipelines/workflows for a more accessible, streamlined, and user-friendly implementation of starfish that could expand its use. Downstream analysis currently involves `R` scripts on [figshare](https://figshare.com/articles/dataset/Supporting_data_for_Systematic_identification_of_cargo-carrying_genetic_elements_reveals_new_dimensions_of_eukaryotic_diversity_/24430447). We aim to improve accessibility of these scripts through implementation in an `R` Shiny app.
+This project aims to improve the usability of [starfish](https://github.com/egluckthaler/starfish). 
+
+Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a tool for *de novo* giant mobile element discovery/annotation in fungal genomes. Starfish currently requires running multiple, separate bash scripts. We aim to create pipelines/workflows for a more accessible, streamlined, and user-friendly implementation of starfish that could expand its use. Downstream analysis currently involves `R` scripts on [figshare](https://figshare.com/articles/dataset/Supporting_data_for_Systematic_identification_of_cargo-carrying_genetic_elements_reveals_new_dimensions_of_eukaryotic_diversity_/24430447). We aim to improve accessibility of these scripts through implementation in an `R` Shiny app.
 
 ### Current implementation
 
@@ -50,13 +52,15 @@ Future goals could include the application of Starfish to non-fungal genomes (pa
 
 ## Deliverables
 
-1. Snakemake pipeline for `starfish` (Jonah)  
-2. DNAnexus app for `starfish` (Alexis) 
-3. Docker workflow for `starfish` (Callum) 
-4. R Shiny app for vizualization of `starfish` output (Meghana, Russel)
+1. Docker workflow for `starfish`  
+2. Snakemake pipeline for `starfish`    
+3. DNAnexus app for `starfish`   
+4. R Shiny app for vizualization of `starfish` output
 
 
-## Running `starfish` with Docker
+## Status
+
+### 1. Docker to run `starfish` (Callum)
 
 I ran into various issues getting the pipeline to work on a Mac so I went
 straight to making a Docker image. 
@@ -92,3 +96,15 @@ docker run -it -v $(pwd):/opt/data --platform linux/amd64 callumm93/starfish:v1.
 cd ../
 ls -1 # You should see data/ here. Inside data/ you should have your new data.
 ```
+
+### 2. Snakemake
+
+Jonah: In progress.
+
+### 3. DNAnexus app
+
+Alexis: In progress. Will use docker Callum created.
+
+### 4. R Shiny app 
+
+Meghana & Russel: In progress.
