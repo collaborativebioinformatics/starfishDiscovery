@@ -20,7 +20,9 @@ Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing
 ## Methods
 
 **Containerization of current pipeline:** The current Starship pipeline consists of individual bash scripts, and the conda environment provided poses difficulty when running on different operating systems. A docker container is created to ensure easy execution across operating systems and to ensure reproducibility.
+
 **Streamlining the current pipeline:**  The pipeline is streamlined on snakemake to create an easier and a modular workflow. This makes the pipeline more efficient and robust.
+
 **Starfish discovery application:** The Starfish Discovery application visualizes the downstream analyses of Starfish through a R Shiny app to provide an interactive experience.
 
 
