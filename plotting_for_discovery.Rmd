@@ -42,7 +42,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       textInput("dir1", "Directory for Starfish Benchmarking:", 
-                "~/OneDrive - UW-Madison/Publications/23_starfish/analyses/Figure3/tyr"),
+                "~/Desktop/hackathon/ilikebigmobileelementsandicannotlie/benchmarking/"),
       textInput("dir2", "Directory for Tyr Pairwise Identities:", 
                 "../../Figure3/tyr/"),
       textInput("dir3", "Directory for Tyr Taxonomic Distribution:", 
