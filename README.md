@@ -14,14 +14,14 @@ This project aims to improve the usability of [starfish](https://github.com/eglu
 
 ```mermaid
 stateDiagram-v2
-[Assembly] --> Mod1
-[Gene Annotation] --> Mod1
-[Protein Sequence] --> Mod1
 [HMM] --> Mod1
+[Genome-Sequence] --> Mod1
+[Gene-Annotation] --> Mod1
+[Protein-Sequence] --> Mod1
 Mod1 --> Mod2
 Mod2 --> Mod3
-Mod3 --> [*]
-[*] --> Mod3
+Mod3 --> [Output]
+[Output] --> Mod3
 ```
 
 Future goals could include the application of Starfish to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.
