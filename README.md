@@ -14,8 +14,7 @@ Mobile genetic elements (also known as transposons or jumping genes) can jump  t
 
 In fungi, transposons confer metal resistance and have a significant impact in genome evolution. However, identifying and annotating them in the genome can be challenging due to their diverse structures, which complicate mapping, and their ability to transfer between species, making it difficult to determine their function.
 
-
-This project aims to improve the usability of [starfish (v1.0.0)](https://github.com/egluckthaler/starfish). Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* giant mobile element discovery/annotation in fungal genomes. 
+Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* giant mobile element discovery/annotation in fungal genomes. This project aims to improve the usability of [starfish (v1.0.0)](https://github.com/egluckthaler/starfish).
 
 
 ## Method
