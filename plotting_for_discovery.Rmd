@@ -1,0 +1,161 @@
+--------------
+author: "Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, Marcus Chan, and Russel Santos"
+title: "Visualization for Starfish Discovery"
+date: "Aug 29, 2024"
+params:
+  outdir: '/Users/meghanaram/Desktop/hackathon/ilikebigelementsandicannotlie/'
+--------------
+Load libraries
+```{r}
+library(shiny)
+library(ggExtra)
+library(ggridges)
+library(ggrepel)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(forcats)
+library(viridis)
+library(hrbrthemes)
+library(ggpubfigs)
+library(seqinr)
+library(ggseqlogo)
+library(cowplot)
+library(stringr)
+library(treemapify)
+library(mgcv)
+library(shadowtext)
+library(ggtree)
+library(treeio)
+library(ape)
+library(phytools)
+library(ggtree)
+```
+
+```{r}
+ui <- fluidPage(
+  
+  # Application title
+  titlePanel("Starfish Discovery"),
+  
+  # Sidebar layout with input and output definitions
+  sidebarLayout(
+    sidebarPanel(
+      textInput("dir1", "Directory for Starfish Benchmarking:", 
+                "~/Desktop/hackathon/ilikebigmobileelementsandicannotlie/benchmarking/"),
+      textInput("dir2", "Directory for Tyr Pairwise Identities:", 
+                "../../Figure3/tyr/"),
+      textInput("dir3", "Directory for Tyr Taxonomic Distribution:", 
+                "../../Figure3/tyr/"),
+      textInput("dir4", "Directory for Elements per Genome:", 
+                "../../Figure3/tyr/"),
+      textInput("benchmarkFile", "Starfish Benchmarking File:", 
+                "starfishBenchmarkStats.txt"),
+      textInput("pairwiseFile", "Tyr Pairwise Identities File:", 
+                "funTyr50_cap25_crp3_p1-512_activeFilt.clipkit.pid_byfam.txt"),
+      textInput("taxonomicFile", "Tyr Taxonomic Distribution File:", 
+                "tyrsPerGenome.txt"),
+      textInput("speciesFile", "Elements per Genome File:", 
+                "tyrsPerSpecies.txt")
+    ),
+    
+    # Main panel for displaying outputs
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Starfish Benchmarking", plotOutput("starfish_plot")),
+        tabPanel("Tyr Pairwise Identities", plotOutput("tyr_pairwise_plot")),
+        tabPanel("Tyr Taxonomic Distribution", plotOutput("tyr_taxonomic_plot")),
+        tabPanel("Elements per Genome", plotOutput("elements_per_genome_plot"))
+      )
+    )
+  )
+)
+
+# Define server logic required to draw the plots
+server <- function(input, output) {
+
+  # Starfish Benchmarking plot
+  output$starfish_plot <- renderPlot({
+    setwd(input$dir1)
+    starfishBenchmark <- read.table(input$benchmarkFile, sep = "\t", header = T)
+    starfishBenchmark$module <- factor(starfishBenchmark$module, levels = c("captain", "boundary", "DR"))
+    
+    ggplot(starfishBenchmark) +
+      geom_col(aes(x = benchmark, y = F1_score), fill = "darkgray", width = 0.75) + 
+      geom_text(aes(x = benchmark, y = as.double(F1_score) + 0.025, label = F1_score), angle = 0, size = 4) +
+      facet_grid(.~ module, scales = "free",  space = "free") +
+      ggpubfigs::theme_grey() + 
+      theme(text  = element_text(size = 15, family = "Helvetica"),
+            axis.text.x=element_text(angle=45)) +
+      labs(title = "Starfish performance on 42 manually annotated elements", y = "F1 score", x = "Starfish module")
+  })
+
+  # Tyr Pairwise Identities plot
+  output$tyr_pairwise_plot <- renderPlot({
+    setwd(input$dir2)
+    famPID <- read.table(input$pairwiseFile, sep = "\t", header = T)
+    
+    ggplot(famPID %>%
+             mutate(percentID = pid * 100) %>%
+             select(comparisonType, percentID)) +
+      geom_violin(aes(x = fct_rev(comparisonType), y = percentID), fill = "darkgray") + 
+      geom_boxplot(aes(x =  fct_rev(comparisonType), y = percentID), fill = "white", width = 0.2, outlier.size = 0, outlier.fill = NA, outlier.color = NA) + 
+      ggpubfigs::theme_grey() + 
+      theme(text  = element_text(size = 18, family = "Helvetica")) +
+      scale_x_discrete(labels = c('within family', 'between family')) +
+      labs(title = "Pairwise seqID of YR refs, from p1-512 alignment", y = "Pairwise sequence identity (%)", x = "Comparison type")
+  })
+  
+  # Tyr Taxonomic Distribution plot
+  output$tyr_taxonomic_plot <- renderPlot({
+    setwd(input$dir3)
+    classOrder <- c("Pucciniomycotina", "Pucciniomycetes", "Ustilaginomycotina", "Ustilaginomycetes", 
+                    "Agaricomycetes", "Dacrymycetes", "Tremellomycetes", "Wallemiomycetes", "Pezizomycetes", 
+                    "Orbiliomycetes", "Eurotiomycetes", "Dothideomycetes", "Lecanoromycetes", "Leotiomycetes", 
+                    "Sordariomycetes", "Xylonomycetes", "Saccharomycotina", "Taphrinomycotina", 
+                    "Mucoromycota", "Glomeromycotina", "Mortierellomycotina", "Mucormycotina", 
+                    "Zoopagomycota", "Zoopagomycotina", "Entomophthoromycotina", "Kickxellomycotina", 
+                    "Chytridiomycota", "Blastocladiomycota", "Chytridiomycetes", "Monoblepharidomycetes", 
+                    "Neocallimastigomycetes", "Microsporidia", "Cryptomycota")
+
+    tyrCounts <- read.table(input$taxonomicFile, header = T, sep = "\t")
+    tyrCounts$taxonID <- factor(tyrCounts$taxonID, levels = classOrder)
+    
+    ggplot(tyrCounts %>%
+             select(taxonID, tyrCount) %>%
+             filter(taxonID %in% classOrder)) +
+      geom_jitter(aes(x = fct_rev(taxonID), y = tyrCount), width = 0.25, height = 0.25, shape = 21, fill = "gray", color = "#3B3B3B", alpha = 0.4, size = 2) +
+      geom_boxplot(aes(x =  fct_rev(taxonID), y = tyrCount), fill = "white", width = 0.75, size = 0.6, outlier.size = 0, outlier.fill = NA, outlier.color = NA) + 
+      ggpubfigs::theme_grey() + 
+      labs(title = "YR taxonomic distribution", x = "Class ID", y = "YR count per genome") +
+      ylim(0,30) +
+      coord_flip() +
+      theme(text  = element_text(size = 6, family = "Helvetica"),
+            axis.text.y = element_text(hjust=0))
+  })
+  
+  # Elements per Genome plot
+  output$elements_per_genome_plot <- renderPlot({
+    setwd(input$dir4)
+    tyrSpecies <- read.table(input$speciesFile, sep = "\t", header = T)
+    elementSpecies <- tyrSpecies %>%
+      group_by(taxonID) %>%
+      tally(elementCount) %>%
+      dplyr::filter(n > 0) %>%
+      dplyr::filter(!grepl('sp\\.', taxonID)) %>%
+      select(taxonID)
+    
+    ggplot(tyrSpecies %>%
+             filter(taxonID %in% elementSpecies$taxonID)) +
+      geom_jitter(aes(x = taxonCount, y = elementCount), shape = 21, fill = "gray", color = "#3B3B3B", alpha = 0.4, size = 2) +
+      ggpubfigs::theme_grey() + 
+      labs(title = "Elements per genome as a function of genomes per species", x = "Genomes per species", y = "Elements per genome") +
+      theme(text  = element_text(size = 6, family = "Helvetica"),
+            axis.text.y = element_text(hjust=0))
+  })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
