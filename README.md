@@ -11,21 +11,16 @@ Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, M
 
 ## Introduction
 
-Mobile genetic elements (also known as transposons or jumping genes) are known to occur across species, from bacteria to humans (add more detail?). Their insertion can have beneficial (e.g., drive evolution), deleterious (e.g., disrupt gene function), or neutral effects to a given genome. Identifying/annotating mobile elements empowers both the understanding of disease and the development of therapeutics (<citation>). Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* giant mobile element discovery and annotation in fungal genomes. In fungi, transposons confer metal resistance and have a significant impact in genome evolution. However, identifying and annotating them in the genome can be challenging due to their diverse structures, which complicate mapping, and their ability to transfer between species, making it difficult to determine their function. 
-
-This project aims to improve the usability of [starfish (v1.0.0)](https://github.com/egluckthaler/starfish).
+Mobile genetic elements (also known as transposons or jumping genes) are known to occur across species, from bacteria to humans (add more detail?). Their insertion can have beneficial (e.g., drive evolution), deleterious (e.g., disrupt gene function), or neutral effects to a given genome. Identifying/annotating mobile elements empowers both the understanding of disease and the development of therapeutics (<citation>). Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* discovery and annotation of giant mobile elements in eukaryotes. Specifically, the tool is built for identifying cargo mobile elements (CMEs) in fungal genomes, but the authors claim thaat _"it can be easily adapted to find any large mobile element (≥6kb) that shares the same basic architecture as a fungal Starship or a bacterial integrative and conjugative element: a "captain" gene with zero or more "cargo" genes downstream of its 3' end.”_. We aimed to test this assertion.
 
 
 ## Methods
 
-**Containerization of current pipeline:** The current Starship pipeline consists of individual bash scripts, and the conda environment provided poses difficulty when running on different operating systems. A docker container is created to ensure easy execution across operating systems and to ensure reproducibility.
 
-**Streamlining the current pipeline:**  The pipeline is streamlined on snakemake to create an easier and a modular workflow. This makes the pipeline more efficient and robust.
+### Streamlining starfish pipeline
+The current starship analysis (v1.0.0) requires executing seven individual bash scripts (Figure 1A). To simplify execution, we aimed to create a true pipeline and Docker contatiner (Figure 1B). The Docker container is available to ensure easy execution across operating systems and to ensure reproducibility (see instructions below). Future hackathon can complete the snakemake pipeline (halfway done) and Shiny app to visualize/automate the downstream analyses of Starfish through a R Shiny app to provide an interactive experience.
 
-**Starfish discovery application:** The Starfish Discovery application visualizes the downstream analyses of Starfish through a R Shiny app to provide an interactive experience.
-
-
-### Original implementation
+**Figure 1A. Original implementation**
 
 ```mermaid
 flowchart TB
@@ -41,7 +36,7 @@ H --> I[Visualize with R scripts]
 I --> I
 ```
 
-### Our streamlined implementation
+**Figure 1B. Our proposed implementation**
 
 ```mermaid
 flowchart TB
@@ -57,21 +52,7 @@ RegionFinder}
 D --> E{Visualize with Shiny}
 ```
 
-## Deliverables
-
-1. Docker workflow for `starfish`  
-2. Snakemake pipeline for `starfish`       
-3. R Shiny app for vizualization of `starfish` output
-
-
-## Status
-
-### 1. Docker to run `starfish` (Callum)
-
-I ran into various issues getting the pipeline to work on a Mac so I went
-straight to making a Docker image. 
-
-You should be able to test it with the following steps:
+### Docker instructions
 
 ```bash
 # Clone repository
@@ -106,18 +87,11 @@ cd ../
 ls -1 # You should see data/ here. Inside data/ you should have your new data.
 ```
 
-### 2. Snakemake
-
-Jonah: In progress.
-
-
-### 3. R Shiny app
-
-Meghana & Russel & Alexis: In progress. Parameterized original R code; testing with Callum's docker example output files.
-
 ## Conclusion and next steps
 
-The `snakemake` implementation streamlines the modular `starfish` code to improve the usability of the tool  and enable the identification and annotation of mobile genetic elements. A docker container has been created for enhanced scalability and reproducibility. These transposons are visualized with their genomic context using a R Shiny application. Future goals could include the application of `starfish` to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.An alternative approach could involve using different computational tools to identify transposons in eukaryotic organisms. By employing multiple methods, you can derive a consensus, which may enhance the accuracy and reliability of identifying mobile genetic elements.
+Our docker for starfish improves the usability of starfish, as many in our group had difficulties running the program on a Mac. The future completion of the started `snakemake` implementation will streamline the modular `starfish` code to further improve the usability of the tool. Improving the usability will enable the identification and annotation of mobile genetic elements in species beyond fungi. The usability would be dramatically improved through a Shiny app for visualizing the results as the provided code and data from the original study are not reproducible for generating figures. 
+
+Future goals also include the application of `starfish` to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.An alternative approach could involve using different computational tools to identify transposons in eukaryotic organisms. By employing multiple methods, you can derive a consensus, which may enhance the accuracy and reliability of identifying mobile genetic elements.
 
 
 
