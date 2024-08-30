@@ -19,7 +19,7 @@ The current starship analysis (v1.0.0) requires executing seven individual bash 
 
 <img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/starfish_original.png" width="1200">
 
-**Figure 1. Original implementation of starfish.**
+**Figure 1. Original implementation of starfish.** Excerpted from <https://github.com/egluckthaler/starfish>.
 
 ### Docker instructions
 
