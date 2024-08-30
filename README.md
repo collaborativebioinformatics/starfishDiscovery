@@ -6,6 +6,8 @@
 
 Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, Marcus Chan, and Russel Santos
 
+From 2024 BCM SV Hackathon
+
 <img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/groupmember_map.png" width="1200">
 
 ## Introduction
