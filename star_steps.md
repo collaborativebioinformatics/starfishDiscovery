@@ -57,7 +57,7 @@ cut -f1,10 test/ann/*emapper.annotations \
 	| perl -pe 's/^([^\s]+?)\t([^\|]+).+$/\1\t\2/' \
 	> test/ann/macph6.gene2og.txt
 	
-$STARFISHDIR/aux/geneOG2mclFormat.pl -i ann/macph6.gene2og.txt -o test/ann/
+$STARFISHDIR/aux/geneOG2mclFormat.pl -i test/ann/macph6.gene2og.txt -o test/ann/
 ```
 
 ## gene finder (module 01)
@@ -187,11 +187,7 @@ mmseqs easy-cluster geneFinder/macpha6_tyr.filt_intersect.fas elementFinder/macp
 $STARFISHDIR/aux/mmseqs2mclFormat.pl -i elementFinder/macpha6_tyr_cluster.tsv -g navis -o elementFinder/
 ```
 
-## WIP stopped here - marcus
 5. use sourmash and mcl to group all elements into haplotypes based on pairwise k-mer similarities of element nucleotide sequences:
-- STARFISHMAINSIMDIR=$/mnt/c/Users/TechD/Documents/Marcus/Others/BaylorCollegeMedicineHackathon2024/starfish/main/sim
-- perl "/mnt/c/Users/TechD/Documents/Marcus/Others/BaylorCollegeMedicineHackathon2024/starfish/main/sim" -m element -t nucl -b elementFinder/macpha6.elements.bed -x macpha6 -o elementFinder/ -a ome2assembly.txt
-
 ```
 starfish sim -m element -t nucl -b elementFinder/macpha6.elements.bed -x macpha6 -o elementFinder/ -a ome2assembly.txt
 starfish group -m mcl -s elementFinder/macpha6.element.nucl.sim -i hap -o elementFinder/ -t 0.05
