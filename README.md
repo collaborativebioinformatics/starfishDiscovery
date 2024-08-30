@@ -10,11 +10,9 @@ Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, M
 
 ## Introduction
 
-Mobile genetic elements (also known as transposons or jumping genes) can jump  to different locations of a genome by either a cut-and-paste mechanism or a copy-and-paste mechanism. Transposons can help genomes evolve, have mutagenic effects and  affect gene expression across species. In humans, they are implicated in the origin of diseases (Chenais.Transposable Elements and Human Diseases: Mechanisms and Implication in the Response to Environmental Pollutants.). On the flip side, they can be used in genetic engineering to cure genetic diseases, making their discovery and annotation in the genome important. 
+Mobile genetic elements (also known as transposons or jumping genes) are known to occur across species, from bacteria to humans (add more detail?). Their insertion can have beneficial (e.g., drive evolution), deleterious (e.g., disrupt gene function), or neutral effects to a given genome. Identifying/annotating mobile elements empowers both the understanding of disease and the development of therapeutics (<citation>). Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* giant mobile element discovery and annotation in fungal genomes. In fungi, transposons confer metal resistance and have a significant impact in genome evolution. However, identifying and annotating them in the genome can be challenging due to their diverse structures, which complicate mapping, and their ability to transfer between species, making it difficult to determine their function. 
 
-In fungi, transposons confer metal resistance and have a significant impact in genome evolution. However, identifying and annotating them in the genome can be challenging due to their diverse structures, which complicate mapping, and their ability to transfer between species, making it difficult to determine their function.
-
-Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* giant mobile element discovery/annotation in fungal genomes. This project aims to improve the usability of [starfish (v1.0.0)](https://github.com/egluckthaler/starfish).
+This project aims to improve the usability of [starfish (v1.0.0)](https://github.com/egluckthaler/starfish).
 
 
 ## Methods
