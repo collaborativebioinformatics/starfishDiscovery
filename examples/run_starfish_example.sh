@@ -14,7 +14,9 @@ realpath gff3/* | perl -pe 's/^(.+?([^\/]+?).final.gff3)$/\2\t\1/' > ome2gff.txt
 
 cat gff3/*.gff3 > macpha6.gff3
 
-mkdir blastdb
+if [ ! -d "blastdb" ]; then
+  mkdir blastdb
+fi
 cut -f2 ome2assembly.txt | xargs cat > blastdb/macpha6.assemblies.fna
 makeblastdb -in blastdb/macpha6.assemblies.fna -out blastdb/macpha6.assemblies -parse_seqids -dbtype nucl
 
@@ -27,8 +29,9 @@ cut -f1,10 ann/*emapper.annotations | grep -v '#' | perl -pe 's/^([^\s]+?)\t([^\
 
 $STARFISHDIR/aux/geneOG2mclFormat.pl -i ann/macph6.gene2og.txt -o ann/
 
-mkdir geneFinder
-
+if [ ! -d "geneFinder" ]; then
+  mkdir geneFinder
+fi
 echo "According to the starfish example, you should see:"
 echo "found 1 new tyr genes and 9 tyr genes that overlap with 11 existing genes"
 
@@ -49,7 +52,10 @@ starfish sketch -m 10000 -q geneFinder/macpha6_tyr.filt_intersect.ids -g ome2con
 
 grep -P '\ttyr\t' geneFinder/macpha6.bed > geneFinder/macpha6.tyr.bed 
 
-mkdir elementFinder
+# mkdir elementFinder
+if [ ! -d "elementFinder" ]; then
+  mkdir elementFinder
+fi
 
 echo "According to the starfish example, you should see:"
 echo "found element boundaries and insertion sites for 7 tyr captains out of 10 input captains"
@@ -96,10 +102,16 @@ join -t$'\t' -1 1 -2 2 <(sort -t$'\t' -k1,1 elementFinder/macpha6.element.navis-
 echo -e "#elementID\tfamilyID\tnavisHapID\tcontigID\tcaptainID\telementBegin\telementEnd\telementLength\tstrand\tboundaryType\temptySiteID\temptyContig\temptyBegin\temptyEnd\temptySeq\tupDR\tdownDR\tDRedit\tupTIR\tdownTIR\tTIRedit\tnestedInside\tcontainNested" > elementFinder/macpha6.elements.ann.feat
 join -t$'\t' -1 1 -2 1 <(sort -t$'\t' -k1,1 elementFinder/macpha6_elements_vs_YRsuperfams_besthits.txt | grep -P '_e|_s' | cut -f1,2) <(sort -t$'\t' -k1,1 elementFinder/macpha6.elements.temp.feat) | awk -F'\t' '{print}' >> elementFinder/macpha6.elements.ann.feat
 
-mkdir pairViz
+# mkdir pairViz
+if [ ! -d "pairViz" ]; then
+  mkdir pairViz
+fi
 starfish pair-viz -m all -t empty -T 2 -A nucmer -a ome2assembly.txt -b elementFinder/macpha6.elements.bed -f elementFinder/macpha6.flank.singleDR.stats -S elementFinder/macpha6.elements.named.stats -o pairViz/
 
-mkdir regionFinder
+# mkdir regionFinder
+if [ ! -d "regionFinder" ]; then
+  mkdir regionFinder
+fi
 
 grep -f <(comm -23 <(cut -f1 geneFinder/macpha6_tyr.filt_intersect.ids | sort) <(grep -P '\tcap\t|\ttyr\t' elementFinder/macpha6.elements.bed | cut -f4| sort)) geneFinder/macpha6.tyr.bed > regionFinder/unaffiliated_tyrs.bed
 
@@ -113,7 +125,10 @@ starfish dereplicate -e elementFinder/macpha6.element.navis-hap.mcl -t regionFin
 
 grep -v '#' regionFinder/macpha6.fog3.d600000.m1.dereplicated.txt | cut -f2 | sort | uniq -c | perl -pe 's/ +//' | sort -k1,1nr
 
-mkdir locusViz
+# mkdir locusViz
+if [ ! -d "locusViz" ]; then
+  mkdir locusViz
+fi
 starfish locus-viz -T 2 -m region -a ome2assembly.txt -b elementFinder/macpha6.elements.bed -x macpha6 -o locusViz/ -A nucmer -r regionFinder/macpha6.fog3.d600000.m1.regions.txt -d regionFinder/macpha6.fog3.d600000.m1.dereplicated.txt -j regionFinder/macpha6.fog3.d600000.m1.haplotype_jaccard.sim  -g ome2consolidatedGFF.txt --tags geneFinder/macpha6_tyr.filt_intersect.ids --gc macpha6.assemblies.gcContent_w1000.bed
 
 cp -r * /tmp/starfish_example_output/

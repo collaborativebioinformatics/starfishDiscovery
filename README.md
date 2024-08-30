@@ -88,6 +88,10 @@ mkdir docker_example
 ## Please excuse the personal dockerhub repo. I can move it to a more official one.
 docker run -it -v $(pwd)/docker_example:/tmp/starfish_example_output/ callumm93/starfish:v1.0.0
 
+# Ensure that your files are located in a a folder called "assembly" and "gff3"
+`cp -r assemblies {your_path}/assembly`
+`cp -r gene_gff {your_path}/gff3`
+
 # Inside the container, run the example script.
 bash run_starfish_example.sh
 ```
