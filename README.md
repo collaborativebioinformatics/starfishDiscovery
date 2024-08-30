@@ -61,10 +61,12 @@ ls -1 # You should see data/ here. Inside data/ you should have your new data.
 We sought to create a Shiny app to visualize/automate the downstream analyses of starfish outputs. This seemed like an easy task given the paper providing code on [figshare](https://figshare.com/articles/dataset/Supporting_data_for_Systematic_identification_of_cargo-carrying_genetic_elements_reveals_new_dimensions_of_eukaryotic_diversity_/24430447?file=44950315) (Figure 2). However, it seems that the figshare was supposed to include directory of additional data (and maybe pre-processing code used to generate it from original starfish output) for each figure, but instead it’s just the pdf of the figure (Figure 2). Without knowing what these 39 files read into the R script look like, it’s hard to match them up to the many output files of starfish. A future hackathon can tackle this issue. For now, we've created a framework for the Shiny app (Figure 3).
 
 <img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/figshare_missing_data.png" width="1200">
-**Figure 2**. Missing data
+
+**Figure 2. Missing data**
 
 <img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/shiny_framework.png" width="1200">
-**Figure 3**. Framework for Shiny app.
+
+**Figure 3. Framework for Shiny app.**
 
 ## Conclusions and future directions
 
