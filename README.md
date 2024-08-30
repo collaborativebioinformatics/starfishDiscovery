@@ -6,7 +6,7 @@
 
 Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, Marcus Chan, and Russel Santos
 
-<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/groupmember_map.png" width="800">
+<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/groupmember_map.png" width="1200">
 
 ## Introduction
 
@@ -17,7 +17,7 @@ Mobile genetic elements (also known as transposons or jumping genes) are known t
 ### Streamlining starfish pipeline
 The current starship analysis (v1.0.0) requires executing seven individual bash scripts (Figure 1A). To simplify execution, we aimed to create a true pipeline and Docker contatiner (Figure 1B). The Docker container is available to ensure easy execution across operating systems and to ensure reproducibility (see instructions below). Future hackathon can complete the snakemake pipeline (halfway done).
 
-<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/starfish_original.png" width="400">
+<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/starfish_original.png" width="1200">
 
 **Figure 1. Original implementation of starfish.**
 
@@ -60,10 +60,10 @@ ls -1 # You should see data/ here. Inside data/ you should have your new data.
 
 We sought to create a Shiny app to visualize/automate the downstream analyses of starfish outputs. This seemed like an easy task given the paper providing code on [figshare](https://figshare.com/articles/dataset/Supporting_data_for_Systematic_identification_of_cargo-carrying_genetic_elements_reveals_new_dimensions_of_eukaryotic_diversity_/24430447?file=44950315) (Figure 2). However, it seems that the figshare was supposed to include directory of additional data (and maybe pre-processing code used to generate it from original starfish output) for each figure, but instead it’s just the pdf of the figure (Figure 2). Without knowing what these 39 files read into the R script look like, it’s hard to match them up to the many output files of starfish. A future hackathon can tackle this issue. For now, we've created a framework for the Shiny app (Figure 3).
 
-<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/figshare_missing_data.png" width="400">
+<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/figshare_missing_data.png" width="1200">
 **Figure 2**. Missing data
 
-<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/shiny_framework.png" width="400">
+<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/shiny_framework.png" width="1200">
 **Figure 3**. Framework for Shiny app.
 
 ## Conclusions and future directions
@@ -74,7 +74,7 @@ Future goals also include the application of `starfish` to non-fungal genomes (p
 
 ## Side notes
 
-<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/perl-omg.png" width="400">
+<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/perl-omg.png" width="1200">
 
 
 
