@@ -7,6 +7,7 @@
 
 Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, Marcus Chan, and Russel Santos
 
+<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/groupmember_map.png" width="800">
 
 ## Introduction
 
