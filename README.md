@@ -118,7 +118,7 @@ Meghana & Russel: In progress. Parameterized original R code; testing with Callu
 
 ## Conclusion and next steps
 
-The streamlined pipeline on snakemake consolidates the modules in the starfish pipeline to identify and annotate mobile genetic elements. A docker container has been created for enhanced scalability and reproducibility. These transposons are visualized with their genomic context using a R Shiny application. Future goals could include the application of Starfish to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.
+The streamlined pipeline on snakemake consolidates the modules in the starfish pipeline to identify and annotate mobile genetic elements. A docker container has been created for enhanced scalability and reproducibility. These transposons are visualized with their genomic context using a R Shiny application. Future goals could include the application of Starfish to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.An alternative approach could involve using different computational tools to identify transposons in eukaryotic organisms. By employing multiple methods, you can derive a consensus, which may enhance the accuracy and reliability of identifying mobile genetic elements.
 
 
 
