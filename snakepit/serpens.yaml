@@ -1,0 +1,14 @@
+
+fna_dir: /scratch/BaylorHack/starfish/examples/assembly/
+gff_dir: /scratch/BaylorHack/starfish/examples/gff3/
+ann_dir: /scratch/BaylorHack/starfish/examples/ann/
+
+# these two will not be needed once the container is setup for snakemake
+star_aux: /project/cull0084/miniconda3/envs/starfish/aux
+star_db: /project/cull0084/miniconda3/envs/starfish/db
+
+# leaving this structured in case there are other things to annotate
+# with additional params
+annotate:
+  tyr:
+    prefix: 'macpha6_tyr'

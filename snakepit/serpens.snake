@@ -1,0 +1,12 @@
+
+
+# user inputs values in config
+configfile: 'serpens.yaml'
+include: 'src/utils.py'
+
+rule all:
+    input:
+        'results/gene_finder/macpha6.tyr.bed',
+
+include: 'rules/prep.smk'
+include: 'rules/gene_finder.smk'
