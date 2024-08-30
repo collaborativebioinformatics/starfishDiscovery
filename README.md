@@ -116,12 +116,9 @@ Jonah: In progress.
 
 Meghana & Russel: In progress. Parameterized original R code; testing with Callum's docker example output files.
 
-## Results 
+## Conclusion and next steps
 
-<Describe how to use it, a use case, or something we found with it>.
-
-## Future directions
-Future goals could include the application of Starfish to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.
+The streamlined pipeline on snakemake consolidates the modules in the starfish pipeline to identify and annotate mobile genetic elements. A docker container has been created for enhanced scalability and reproducibility. These transposons are visualized with their genomic context using a R Shiny application. Future goals could include the application of Starfish to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.
 
 
 
