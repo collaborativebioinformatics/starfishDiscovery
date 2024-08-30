@@ -73,10 +73,3 @@ We sought to create a Shiny app to visualize/automate the downstream analyses of
 Our docker for starfish improves the usability of starfish, as many in our group had difficulties running the program on a Mac. The future completion of the started `snakemake` implementation will streamline the modular `starfish` code to further improve the usability of the tool. Improving the usability will enable the identification and annotation of mobile genetic elements in species beyond fungi. The usability would be dramatically improved through a Shiny app for visualizing the results as the provided code and data from the original study are not reproducible for generating figures. 
 
 Future goals also include the application of `starfish` to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.An alternative approach could involve using different computational tools to identify transposons in eukaryotic organisms. By employing multiple methods, you can derive a consensus, which may enhance the accuracy and reliability of identifying mobile genetic elements.
-
-## Side notes
-
-<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/perl-omg.png" width="1200">
-
-
-
