@@ -18,7 +18,7 @@ Mobile genetic elements (also known as transposons or jumping genes) are known t
 
 ### Streamlining starfish pipeline
 
-The current starship analysis (v1.0.0) requires executing individual bash scripts (Figure 1A). To simplify execution, we aimed to create a true pipeline and Docker contatiner (Figure 1B). The Docker container is available to ensure easy execution across operating systems and to ensure reproducibility (see instructions below). Future hackathon can complete the snakemake pipeline (halfway done).
+The current starship analysis (v1.0.0) requires executing individual bash scripts (Figure 1A). To simplify execution, we aimed to create a true pipeline and Docker contatiner (Figure 1B). The Docker container is available to ensure easy execution across operating systems and to ensure reproducibility (see instructions below). A future hackathon can complete the snakemake pipeline (halfway done).
 
 <img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/starfish_original.png" width="1200">
 
