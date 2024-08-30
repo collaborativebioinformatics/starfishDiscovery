@@ -62,11 +62,11 @@ We sought to create a Shiny app to visualize/automate the downstream analyses of
 
 <img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/figshare_missing_data.png" width="1200">
 
-**Figure 2. Missing data**
+**Figure 2. Missing data.** The `starfishScripts.R` require 39 input files to generate plots. The input file names in the the script are not found in the example run output, suggesting post-processing is required prior to implementing this script. The script references a directory for each figure, suggesting that the authors may have intended to upload a tarball directory for each figure that included the input files and post-processing scripts. However, only the pdf version of each figure is provided in the figshare.
 
 <img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/shiny_framework.png" width="1200">
 
-**Figure 3. Framework for Shiny app.**
+**Figure 3. Framework for Shiny app.** Once the `starfishScripts.R` input files are resolved, we have `plotting_for_discovery.Rmd` file with Shiny framework ready to go.
 
 ## Conclusions and future directions
 
