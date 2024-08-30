@@ -1,7 +1,6 @@
 # Starfish Discovery
 
 <img src="https://github.com/collaborativebioinformatics/ilikebigmobileelementsandicannotlie/blob/main/894810_cartoon_starfish_with_binoculars_xl-1024-v1-0.png" width="400">
-*aka ilikebigmobileelementsandicannotlie*
 
 ## Group members
 
@@ -13,9 +12,7 @@ Jonah Cullen, Callum MacPhillamy, Mauricio Moldes, Alexis Norris, Meghana Ram, M
 
 Mobile genetic elements (also known as transposons or jumping genes) are known to occur across species, from bacteria to humans (add more detail?). Their insertion can have beneficial (e.g., drive evolution), deleterious (e.g., disrupt gene function), or neutral effects to a given genome. Identifying/annotating mobile elements empowers both the understanding of disease and the development of therapeutics (<citation>). Starfish ([Gluck-Thaler and Vogen. Systematic identification of cargo-mobilizing genetic elements reveals new dimensions of eukaryotic diversity. Nucleic Acids Research 2024.](https://doi.org/10.1093/nar/gkae327)) is a recently developed tool for *de novo* discovery and annotation of giant mobile elements in eukaryotes. Specifically, the tool is built for identifying cargo mobile elements (CMEs) in fungal genomes, but the authors claim thaat _"it can be easily adapted to find any large mobile element (≥6kb) that shares the same basic architecture as a fungal Starship or a bacterial integrative and conjugative element: a "captain" gene with zero or more "cargo" genes downstream of its 3' end.”_. We aimed to test this assertion.
 
-
 ## Methods
-
 
 ### Streamlining starfish pipeline
 The current starship analysis (v1.0.0) requires executing seven individual bash scripts (Figure 1A). To simplify execution, we aimed to create a true pipeline and Docker contatiner (Figure 1B). The Docker container is available to ensure easy execution across operating systems and to ensure reproducibility (see instructions below). Future hackathon can complete the snakemake pipeline (halfway done) and Shiny app to visualize/automate the downstream analyses of Starfish through a R Shiny app to provide an interactive experience.
@@ -87,11 +84,26 @@ cd ../
 ls -1 # You should see data/ here. Inside data/ you should have your new data.
 ```
 
-## Conclusion and next steps
+### Challenges with creating R Shiny app
+
+It seems that the figshare was supposed to include directory of additional data (and maybe pre-processing code used to generate it from original starfish output) for each Figure, but instead it’s just the pdf of the Figure (Figure 2 below). 
+Without knowing what these 39 files read into the R script look like, it’s hard to match them up to the many output files of starfish. A future hackathon can tackle this issue. For now, we've created a framework for the Shiny app (Figure 3).
+
+<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/figshare_missing_data.png" width="400">
+**Figure 2**. Missing data
+
+<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/shiny_framework.png" width="400">
+**Figure 3**. Framework for Shiny app.
+
+## Conclusions and future directions
 
 Our docker for starfish improves the usability of starfish, as many in our group had difficulties running the program on a Mac. The future completion of the started `snakemake` implementation will streamline the modular `starfish` code to further improve the usability of the tool. Improving the usability will enable the identification and annotation of mobile genetic elements in species beyond fungi. The usability would be dramatically improved through a Shiny app for visualizing the results as the provided code and data from the original study are not reproducible for generating figures. 
 
 Future goals also include the application of `starfish` to non-fungal genomes (particularly, mammalian). However, there are anticipated challenges of acquiring the appropriate annotation input files and computational time when moving from small fungal to large mammalian genomes.An alternative approach could involve using different computational tools to identify transposons in eukaryotic organisms. By employing multiple methods, you can derive a consensus, which may enhance the accuracy and reliability of identifying mobile genetic elements.
+
+## Side notes
+
+<img src="https://github.com/collaborativebioinformatics/starfishDiscovery/blob/main/perl-omg.png" width="400">
 
 
 
